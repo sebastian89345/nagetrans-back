@@ -8,4 +8,4 @@ const typeSchema = new Schema({
     versionKey: false
 })
 
-module.exports = mongoose.model('type', typeSchema);
+module.exports = mongoose.model('types', typeSchema);
