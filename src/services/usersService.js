@@ -2,7 +2,7 @@ const usersModel = require('../models/usersModel');
 
 const getAll = async () =>{
     try {
-        return await usersModel.find({ }).populate('role').populate('status').populate('model').populate('type').populate('brand')
+        return await usersModel.find({ }).populate('role').populate('status').populate('model').populate('types').populate('brand')
     } catch (error) {
         throw error
     }
@@ -10,7 +10,7 @@ const getAll = async () =>{
 
 const getId = async (_id) =>{
     try {
-        return await usersModel.find({_id}).populate('role').populate('status').populate('model').populate('type').populate('brand')
+        return await usersModel.find({_id}).populate('role').populate('status').populate('model').populate('types').populate('brand')
     } catch (error) {
         throw error
     }

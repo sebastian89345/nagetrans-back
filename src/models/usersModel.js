@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-const typeSchema = new Schema({
+const userSchema = new Schema({
     user:String,
     vin: String,
     dni: Number,
@@ -14,8 +14,8 @@ const typeSchema = new Schema({
         ref:"brand",
         type:Schema.Types.ObjectId
     }],
-    type: [{
-        ref:"type",
+    types: [{
+        ref:"types",
         type:Schema.Types.ObjectId
     }],
     model: [{
@@ -35,4 +35,4 @@ const typeSchema = new Schema({
     versionKey: false
 })
 
-module.exports = mongoose.model('users', typeSchema);
+module.exports = mongoose.model('users', userSchema);
