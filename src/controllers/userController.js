@@ -35,7 +35,7 @@ const create = async (req, res) => {
         let users;
         
         //Se busca el rol del vehiculo primero
-        if (role === '6585dd37eccfb9d2ba85542b'){
+        if (role === '6585dd37eccfb9d2ba85542b' || role === '6585dd45eccfb9d2ba85542d'){
             users = await usersService.vehicleExisting(user,vin);
         } else {
             users = await usersService.personExisting(user,dni);
