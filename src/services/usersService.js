@@ -16,7 +16,7 @@ const getId = async (_id) =>{
     }
 }
 
-const create = async (user,vin,type,model,brand ,dni,email,names,surname,phoneNumber,password,status,role) =>{
+const create = async (user,vin,type,model,brand ,dni,email,names,surnames,phoneNumber,password,status,role,show) =>{
     try {
         return await usersModel.create({
             user:user,
@@ -27,11 +27,12 @@ const create = async (user,vin,type,model,brand ,dni,email,names,surname,phoneNu
             dni:dni,
             email:email,
             names:names,
-            surname:surname,
+            surnames:surnames,
             phoneNumber:phoneNumber,
             password:password,
             status:status,
-            role:role
+            role:role,
+            show:show
         });
     } catch (error) {
         throw error

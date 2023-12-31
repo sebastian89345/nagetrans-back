@@ -31,10 +31,11 @@ const getId = async (req, res) => {
 
 const create = async (req, res) => {
     try {
-        const { user,vin,type,model,brand,dni,email,names,surname,phoneNumber,password,status,role } = req.body;
+        const { user,vin,type,model,brand,dni,email,names,surnames,phoneNumber,password,status,role,show } = req.body;
         let users;
         
-        if (role === '64b2635fcbdc48b0b07b1f0f'){
+        //Se busca el rol del vehiculo primero
+        if (role === '6585dd37eccfb9d2ba85542b'){
             users = await usersService.vehicleExisting(user,vin);
         } else {
             users = await usersService.personExisting(user,dni);
@@ -45,7 +46,7 @@ const create = async (req, res) => {
         }
 
         const passwordHash = await encrypt(password);
-        const response = await usersService.create(user,vin,type,model,brand,dni,email,names,surname,phoneNumber,passwordHash,status,role);
+        const response = await usersService.create(user,vin,type,model,brand,dni,email,names,surnames,phoneNumber,passwordHash,status,role,show);
         messagePersonalized(res,201,'Registrado con exito',response);
     } catch (e) {
         httpError(res, e)

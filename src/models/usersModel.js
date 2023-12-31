@@ -10,6 +10,7 @@ const userSchema = new Schema({
     surnames: String,
     phoneNumber: Number,
     email: String,
+    show:String,
     brand: [{
         ref:"brand",
         type:Schema.Types.ObjectId
