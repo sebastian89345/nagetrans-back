@@ -4,11 +4,11 @@ var Schema = mongoose.Schema;
 const userSchema = new Schema({
     user:String,
     vin: String,
-    dni: Number,
+    dni: String,
     password: String,
     names: String,
     surnames: String,
-    phoneNumber: Number,
+    phoneNumber: String,
     email: String,
     show:String,
     brand: [{
