@@ -16,12 +16,12 @@ const getId = async (_id) =>{
     }
 }
 
-const create = async (user,vin,type,model,brand ,dni,email,names,surnames,phoneNumber,password,status,role,show) =>{
+const create = async (user,vin,types,model,brand ,dni,email,names,surnames,phoneNumber,password,status,role,show) =>{
     try {
         return await usersModel.create({
             user:user,
             vin:vin,
-            type:type,
+            types:types,
             model:model,
             brand:brand,
             dni:dni,

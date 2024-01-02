@@ -31,7 +31,7 @@ const getId = async (req, res) => {
 
 const create = async (req, res) => {
     try {
-        const { user,vin,type,model,brand,dni,email,names,surnames,phoneNumber,password,status,role,show } = req.body;
+        const { user,vin,types,model,brand,dni,email,names,surnames,phoneNumber,password,status,role,show } = req.body;
         let users;
         
         //Se busca el rol del vehiculo primero
@@ -46,7 +46,7 @@ const create = async (req, res) => {
         }
 
         const passwordHash = await encrypt(password);
-        const response = await usersService.create(user,vin,type,model,brand,dni,email,names,surnames,phoneNumber,passwordHash,status,role,show);
+        const response = await usersService.create(user,vin,types,model,brand,dni,email,names,surnames,phoneNumber,passwordHash,status,role,show);
         messagePersonalized(res,201,'Registrado con exito',response);
     } catch (e) {
         httpError(res, e)
