@@ -18,6 +18,10 @@ const v1StatusRoutes = require('./routes/statusRoutes');
 const v1RolesRoutes = require('./routes/rolesRoutes');
 const v1UsersRoutes = require('./routes/usersRoutes');
 const v1AuthRoutes = require('./routes/authRoutes');
+const v1epsRoutes = require('./routes/epsRoutes');
+const v1arlRoutes = require('./routes/arlRoutes');
+const v1afpRoutes = require('./routes/afpRoutes');
+const v1compensationboxRoutes = require('./routes/compensationboxRoutes');
 
 const database = require('./database/database');
 
@@ -34,6 +38,10 @@ app.use('/api/v1/status/',v1StatusRoutes);
 app.use('/api/v1/role/',v1RolesRoutes);
 app.use('/api/v1/users/',v1UsersRoutes);
 app.use('/api/v1/auth/',v1AuthRoutes);
+app.use('/api/v1/eps/',v1epsRoutes);
+app.use('/api/v1/arl/',v1arlRoutes);
+app.use('/api/v1/afp/',v1afpRoutes);
+app.use('/api/v1/compensationbox/',v1compensationboxRoutes);
 
 app.listen(PORT, () => { 
     console.log(`API is listening on port ${PORT} 🚀`); 
