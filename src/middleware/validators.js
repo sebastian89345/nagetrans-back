@@ -48,4 +48,31 @@ const validatorUpdate = [
     }
 ]
 
-module.exports = { login,validatorCreate,validatorUpdate };
+const validatorUser = [
+    check("user")
+    .exists()
+    .notEmpty(),
+    check("email")
+    .exists()
+    .notEmpty(),
+    check("role")
+    .exists()
+    .notEmpty(),
+    check("status")
+    .exists()
+    .notEmpty(),
+    check("password")
+    .exists()
+    .notEmpty(),
+    (req , res , next ) => {
+        try {
+            validationResult(req).throw()
+            return next()
+        } catch (err) {
+            res.status(403);
+            res.send({errors : err.array() })
+        }
+    }
+]
+
+module.exports = { login,validatorCreate,validatorUpdate,validatorUser };
