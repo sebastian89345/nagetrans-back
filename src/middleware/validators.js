@@ -48,7 +48,7 @@ const validatorUpdate = [
     }
 ]
 
-const validatorUser = [
+const validatorCreateUser = [
     check("user")
     .exists()
     .notEmpty(),
@@ -75,4 +75,4 @@ const validatorUser = [
     }
 ]
 
-module.exports = { login,validatorCreate,validatorUpdate,validatorUser };
+module.exports = { login,validatorCreate,validatorUpdate,validatorCreateUser };
