@@ -31,22 +31,22 @@ const getId = async (req, res) => {
 
 const create = async (req, res) => {
     try {
-        const { user,vin,types,model,brand,dni,email,names,surnames,phoneNumber,password,status,role,show } = req.body;
+        const { user,placa,types,model,brand,dni,email,names,surnames,phoneNumber,password,status,role,show } = req.body;
         let users;
         
         //Se busca el rol del vehiculo primero
         if (role === '6585dd37eccfb9d2ba85542b' || role === '6585dd45eccfb9d2ba85542d'){
-            users = await usersService.vehicleExisting(user,vin);
+            users = await usersService.vehicleExisting(user,placa);
         } else {
             users = await usersService.personExisting(user,dni);
         }
 
         if(users){
-            return messagePersonalized(res,400,'usuario o identificacion ya registrados',{user:user,dni:dni,vin:vin});
+            return messagePersonalized(res,400,'usuario o identificacion ya registrados',{user:user,dni:dni,placa:placa});
         }
 
         const passwordHash = await encrypt(password);
-        const response = await usersService.create(user,vin,types,model,brand,dni,email,names,surnames,phoneNumber,passwordHash,status,role,show);
+        const response = await usersService.create(user,placa,types,model,brand,dni,email,names,surnames,phoneNumber,passwordHash,status,role,show);
         messagePersonalized(res,201,'Registrado con exito',response);
     } catch (e) {
         httpError(res, e)
