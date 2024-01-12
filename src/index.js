@@ -24,6 +24,7 @@ const v1afpRoutes = require('./routes/afpRoutes');
 const v1compensationboxRoutes = require('./routes/compensationboxRoutes');
 const v1driverDocumentRoutes = require('./routes/driverDocumentRoutes');
 const v1vehicleDocumentRoutes = require('./routes/vehicleDocumentRoutes');
+const v1listCheckRoutes = require('./routes/listCheckRoutes');
 
 const database = require('./database/database');
 
@@ -46,6 +47,7 @@ app.use('/api/v1/afp/',v1afpRoutes);
 app.use('/api/v1/compensationbox/',v1compensationboxRoutes);
 app.use('/api/v1/driverDocument/',v1driverDocumentRoutes);
 app.use('/api/v1/vehicledocument/',v1vehicleDocumentRoutes);
+app.use('/api/v1/listCheck/',v1listCheckRoutes);
 
 app.listen(PORT, () => { 
     console.log(`API is listening on port ${PORT} 🚀`); 
