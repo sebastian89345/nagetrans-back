@@ -2,7 +2,7 @@ const listCheckModel = require('../models/listCheckModel');
 
 const getAll = async () =>{
     try {
-        return await listCheckModel.find({ }).populate('userDriver').populate('userVehicle');
+        return await listCheckModel.find({ }).populate('userVehicle').populate('userDriver');
     } catch (error) {
         throw error
     }
@@ -10,7 +10,7 @@ const getAll = async () =>{
 
 const getId = async (_id) =>{
     try {
-        return await listCheckModel.find({_id}).populate('userDriver').populate('userVehicle');
+        return await listCheckModel.find({_id}).populate('userVehicle').populate('userDriver');
     } catch (error) {
         throw error
     }
