@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 const listCheckSchema = new Schema({
-    
     userVehicle: [{
         ref:"users",
         type:Schema.Types.ObjectId
@@ -22,11 +21,11 @@ const listCheckSchema = new Schema({
     emergencyBrake:String,
     whistle:String,
     safetyBelts:String,
-    GlassLifter:String, 
-    Lightning:String, 
+    glassLifter:String, 
+    lightning:String, 
     //Revisión Externa
     directionals:String,
-    Stationary:String,
+    stationary:String,
     highBeams:String,
     lowLights:String,
     stop:String,
