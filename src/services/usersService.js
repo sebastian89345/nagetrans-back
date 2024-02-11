@@ -1,5 +1,7 @@
 const usersModel = require('../models/usersModel');
 
+let vehicle = '6585dd37eccfb9d2ba85542b'
+
 const getAll = async () =>{
     try {
         return await usersModel.find({ }).populate('role').populate('status').populate('model').populate('types').populate('brand');
@@ -18,6 +20,8 @@ const getId = async (_id) =>{
 
 const create = async (user,placa,types,model,brand ,dni,email,names,surnames,phoneNumber,password,status,role,show) =>{
     try {
+        let responseInternalNumber;
+        if(role === vehicle){ responseInternalNumber = await internalNumber(role); }
         return await usersModel.create({
             user:user,
             placa:placa,
@@ -32,11 +36,24 @@ const create = async (user,placa,types,model,brand ,dni,email,names,surnames,pho
             password:password,
             status:status,
             role:role,
-            show:show
+            show:show,
+            internalNumber:responseInternalNumber
         });
     } catch (error) {
         throw error
     }
+}
+
+const internalNumber = async (role) => {
+    let internalNumber;
+    let filterRole = await usersModel.find({ role });
+    if(filterRole.length > 0){
+        let lengthUser = filterRole.length - 1;
+        internalNumber = filterRole[lengthUser].internalNumber + 1;
+    } else {
+        internalNumber = 0;
+    }
+    return internalNumber
 }
 
 const update = async (_id,body) =>{
@@ -69,11 +86,11 @@ const personExisting = async (user,dni) =>{
     }
 }
 
-const vehicleExisting = async (user,vin) =>{
+const vehicleExisting = async (user,placa) =>{
     try {
         const userData = await usersModel.findOne({user:user});
-        const vinData = await usersModel.findOne({vin:vin});
-        if( userData !== null || vinData !== null ){
+        const placaData = await usersModel.findOne({placa:placa});
+        if( userData !== null || placaData !== null ){
             return true;
         } else {
             return false;

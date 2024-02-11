@@ -10,6 +10,7 @@ const userSchema = new Schema({
     surnames: String,
     phoneNumber: String,
     email: String,
+    internalNumber:Number,
     show:String,
     brand: [{
         ref:"brand",

@@ -2,6 +2,9 @@ const { httpError,messagePersonalized } = require('../helpers/handleMessage');
 const  usersService  = require("../services/usersService");
 const { encrypt } = require('../helpers/handleBcrypt');
 
+let admin = '6585dd45eccfb9d2ba85542d';
+let vehicle = '6585dd37eccfb9d2ba85542b';
+
 const getAll = async (req, res) => {
     try {
         const response = await usersService.getAll();
@@ -35,7 +38,7 @@ const create = async (req, res) => {
         let users;
         
         //Se busca el rol del vehiculo primero
-        if (role === '6585dd37eccfb9d2ba85542b' || role === '6585dd45eccfb9d2ba85542d'){
+        if (role === vehicle || role === admin){
             users = await usersService.vehicleExisting(user,placa);
         } else {
             users = await usersService.personExisting(user,dni);
