@@ -22,7 +22,7 @@ const listCheckSchema = new Schema({
     paint:String,
     //ESTADO DE COMODIDAD
     airConditioning:String,
-    silletería:String,
+    chairs:String,
     lighter:String,
     interiorOrCeilingLight:String,
     //NIVELES Y PERDIDA DE LIQUIDOS
