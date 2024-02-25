@@ -1,4 +1,5 @@
 {
     "urlDatabaseDev":"mongodb://localhost:27017/nagetrans",
-    "urlDatabaseProd":"mongodb+srv://sebastian893:xiAMT6G5j7WHJSKA@cluster0.eqytyg7.mongodb.net/nagetrans"
+    "urlDatabaseRender":"mongodb+srv://sebastian893:xiAMT6G5j7WHJSKA@cluster0.eqytyg7.mongodb.net/nagetrans",
+    "urlDatabaseQA":"mongodb+srv://nagetrans:<password>@cluster0.kodfwu8.mongodb.net/"
 }
