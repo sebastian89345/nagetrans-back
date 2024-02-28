@@ -28,7 +28,7 @@ const v1listCheckRoutes = require('./routes/listCheckRoutes');
 
 const database = require('./database/database');
 
-//morgan es algo opcionar
+//morgan es algo opcional
 app.use(morgan('dev'));
 
 //cors para no tener problemas con peticiones
