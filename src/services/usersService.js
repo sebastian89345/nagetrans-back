@@ -1,6 +1,6 @@
 const usersModel = require('../models/usersModel');
 
-let vehicle = '6585dd37eccfb9d2ba85542b'
+let vehicle = '65dbe6f499a8b5d6417a7895'
 
 const getAll = async () =>{
     try {
@@ -18,10 +18,8 @@ const getId = async (_id) =>{
     }
 }
 
-const create = async (user,placa,types,model,brand ,dni,email,names,surnames,phoneNumber,password,status,role,show) =>{
+const create = async (user,placa,types,model,brand,dni,email,names,surnames,phoneNumber,password,status,role,show) =>{
     try {
-        let responseInternalNumber;
-        if(role === vehicle){ responseInternalNumber = await internalNumber(role); }
         return await usersModel.create({
             user:user,
             placa:placa,
@@ -44,17 +42,44 @@ const create = async (user,placa,types,model,brand ,dni,email,names,surnames,pho
     }
 }
 
-const internalNumber = async (role) => {
-    let internalNumber;
-    let filterRole = await usersModel.find({ role });
-    if(filterRole.length > 0){
-        let lengthUser = filterRole.length - 1;
-        internalNumber = filterRole[lengthUser].internalNumber + 1;
-    } else {
-        internalNumber = 0;
-    }
-    return internalNumber
-}
+// cretae con numero interno autogenerado
+// const create = async (user,placa,types,model,brand,dni,email,names,surnames,phoneNumber,password,status,role,show) =>{
+//     try {
+//         let responseInternalNumber;
+//         if(role === vehicle){ responseInternalNumber = await internalNumber(role); }
+//         return await usersModel.create({
+//             user:user,
+//             placa:placa,
+//             types:types,
+//             model:model,
+//             brand:brand,
+//             dni:dni,
+//             email:email,
+//             names:names,
+//             surnames:surnames,
+//             phoneNumber:phoneNumber,
+//             password:password,
+//             status:status,
+//             role:role,
+//             show:show,
+//             internalNumber:responseInternalNumber
+//         });
+//     } catch (error) {
+//         throw error
+//     }
+// }
+
+// const internalNumber = async (role) => {
+//     let internalNumber;
+//     let filterRole = await usersModel.find({ role });
+//     if(filterRole.length > 0){
+//         let lengthUser = filterRole.length - 1;
+//         internalNumber = filterRole[lengthUser].internalNumber + 1;
+//     } else {
+//         internalNumber = 0;
+//     }
+//     return internalNumber
+// }
 
 const update = async (_id,body) =>{
     try {
