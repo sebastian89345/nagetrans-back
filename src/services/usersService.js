@@ -18,7 +18,7 @@ const getId = async (_id) =>{
     }
 }
 
-const create = async (user,placa,types,model,brand,dni,email,names,surnames,phoneNumber,password,status,role,show) =>{
+const create = async (user,placa,types,model,brand,dni,email,names,surnames,phoneNumber,password,status,role,show,internalNumber) =>{
     try {
         return await usersModel.create({
             user:user,
@@ -35,14 +35,14 @@ const create = async (user,placa,types,model,brand,dni,email,names,surnames,phon
             status:status,
             role:role,
             show:show,
-            internalNumber:responseInternalNumber
+            internalNumber:internalNumber
         });
     } catch (error) {
         throw error
     }
 }
 
-// cretae con numero interno autogenerado
+// create con numero interno autogenerado
 // const create = async (user,placa,types,model,brand,dni,email,names,surnames,phoneNumber,password,status,role,show) =>{
 //     try {
 //         let responseInternalNumber;
@@ -124,6 +124,5 @@ const vehicleExisting = async (user,placa) =>{
         throw error
     }
 }
-
 
 module.exports = { getAll ,getId ,create ,update ,deleteId,personExisting , vehicleExisting }
