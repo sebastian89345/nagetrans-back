@@ -38,7 +38,7 @@ const create = async (req, res) => {
         let users;
         
         //Se busca el rol del vehiculo primero
-        if (role === vehicle || role === admin){
+        if (role === vehicle){
             users = await usersService.vehicleExisting(user,placa);
         } else {
             users = await usersService.personExisting(user,dni);
@@ -47,6 +47,7 @@ const create = async (req, res) => {
         if(users){
             return messagePersonalized(res,400,'usuario o identificacion ya registrados',{user:user,dni:dni,placa:placa});
         }
+        
         const passwordHash = await encrypt(password);
         const response = await usersService.create(user,placa,types,model,brand,dni,email,names,surnames,phoneNumber,passwordHash,status,role,show,internalNumber );
         messagePersonalized(res,201,'Registrado con exito',response);
